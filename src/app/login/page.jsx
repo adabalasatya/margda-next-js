@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -82,7 +82,7 @@ const Login = () => {
           terms: false,
         });
         setTimeout(() => {
-          router.push("/dashboard/service-exchange");
+          router.push("/serviceexchange");
         }, 500);
       } else {
         alert("An unexpected error occurred. Please try again.");
@@ -204,10 +204,7 @@ const Login = () => {
 
         <p className="text-white/70 text-center mt-4">
           Don&apos;t have an account?{" "}
-          <Link
-            href="/register-mobile"
-            className="text-teal-400 hover:underline"
-          >
+          <Link href="/register" className="text-teal-400 hover:underline">
             Register
           </Link>
         </p>

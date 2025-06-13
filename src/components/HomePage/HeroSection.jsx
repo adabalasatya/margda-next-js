@@ -198,7 +198,7 @@ const HeroSection = () => {
               </p>
 
               <Link
-                href="/register"
+                href="/join"
                 className="bg-white text-black px-12 py-4 rounded-full text-[18px] font-semibold transition-all duration-300 hover:bg-gray-200 hover:scale-105 hover:shadow-lg animate-pulse"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
