@@ -66,7 +66,7 @@ const DashboardSidebar = () => {
       {/* Scrollable Content */}
       <div className="flex-1 overflow-y-auto">
         {/* Stats Section */}
-        <div className="px-6 py-6 mt-4 bg-blue-900/90 border border-white/10 rounded-lg mx-2">
+        <div className="px-5 py-6 mt-4 bg-blue-900/90 border border-white/10 rounded-lg mx-2">
           {[
             { icon: <FiMessageSquare className="w-4 h-4 text-white" />, text: "MESSAGES: 0" },
             { icon: <FiDatabase className="w-4 h-4 text-white" />, text: "DATA: ₹0" },
@@ -91,7 +91,7 @@ const DashboardSidebar = () => {
           {menuItems.map((item, index) => (
             <div
               key={index}
-              className="flex items-center justify-between mb-6 cursor-pointer hover:bg-blue-600/50 bg-blue-900/90 px-4 py-4 rounded-3xl text-white border border-white/90 transition-colors duration-200"
+              className="flex items-center justify-between mb-6 cursor-pointer hover:bg-blue-600/50 bg-blue-900/90 px-2 py-4 rounded-3xl text-white border border-white/90 transition-colors duration-200"
             >
               <div className="flex ml-4 items-center">
                 <div className="w-5 h-5 mr-3 flex items-center justify-center text-white">

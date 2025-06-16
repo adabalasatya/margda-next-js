@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Search, Phone, Star } from 'lucide-react';
+import { FaRupeeSign, FaPlusCircle } from 'react-icons/fa';
 
 export default function ServiceExchange() {
   const [activeTab, setActiveTab] = useState('offered');
@@ -35,29 +36,34 @@ export default function ServiceExchange() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <button className="bg-gray-800 text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-700 transition-colors">
-            <span className="text-lg">⚡</span>
-            Recharge
-          </button>
-          
-          <h1 className="text-4xl font-bold text-orange-500">Service Exchange</h1>
-          
-          <button className="bg-gray-800 text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-700 transition-colors">
-            <span className="text-lg">👍</span>
-            Add Service
-          </button>
-        </div>
+       <div className="flex justify-between items-center mb-8">
+  {/* Recharge Button */}
+  <button className=" bg-gradient-to-r from-gray-900 to-gray-600  text-white px-6 py-1 rounded-xl flex items-center gap-2 hover:scale-105 transition-colors">
+    <FaRupeeSign className="text-lg" />
+    Recharge
+  </button>
+
+  {/* Title */}
+  <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-700 text-transparent bg-clip-text">
+  Service Exchange
+</h1>
+
+  {/* Add Service Button */}
+  <button className=" bg-gradient-to-r from-gray-600 to-gray-900 text-white px-6 py-1 rounded-xl flex items-center gap-2 hover:scale-105 transition-colors">
+    <FaPlusCircle className="text-lg" />
+    Add Service
+  </button>
+</div>
 
         {/* Description */}
         <div className="text-center mb-8">
-          <p className="text-gray-700 text-lg mb-2">
+          <p className="text-gray-700 font-semibold text-md mb-2">
             Users click to instantly call service providers and pay by the minute to consult with experts.
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-700 font-semibold text-md">
             Verified professionals can offer on-demand solutions on per-minute talk time and a freelancing or commission basis.
           </p>
         </div>
@@ -88,11 +94,12 @@ export default function ServiceExchange() {
 
         {/* Service Offers Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-blue-600 text-center mb-8">Service Offers</h2>
-          
+          <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 to-blue-900 shadown-lg text-transparent bg-clip-text">
+  Service Offers
+</h2>          
           {/* Search and Filter Bar */}
           <div className="flex gap-4 mb-8 max-w-4xl mx-auto">
-            <select className="flex-1 px-4 py-3 bg-white border border-gray-300 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select className="flex-1 px-4 py-3 bg-white border border-blue-400 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option>Service Type</option>
               <option>Sales & Business</option>
               <option>Marketing</option>
@@ -100,7 +107,7 @@ export default function ServiceExchange() {
               <option>Consulting</option>
             </select>
             
-            <select className="flex-1 px-4 py-3 bg-white border border-gray-300 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select className="flex-1 px-4 py-3 bg-white border border-blue-400 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option>Service</option>
               <option>Business Development</option>
               <option>Digital Marketing</option>
@@ -109,13 +116,13 @@ export default function ServiceExchange() {
             </select>
             
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-12 pr-4 py-3 text-gray-900 font-bold bg-white border border-blue-400 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
