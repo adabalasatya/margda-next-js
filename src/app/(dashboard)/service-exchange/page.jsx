@@ -1,8 +1,93 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Search, Phone, Star } from 'lucide-react';
-import { FaRupeeSign, FaPlusCircle } from 'react-icons/fa';
+import { Search, Phone, Star, Headset } from 'lucide-react';
+import { FaRupeeSign, FaPlusCircle, FaHeadset, FaPhone, FaStar} from 'react-icons/fa';
+
+const ProfessionalCard = ({
+  name,
+  category,
+  languages,
+  talk,
+  timing,
+  image,
+  isActive,
+  bgGradient,
+}) => {
+  const blurColor = bgGradient.split(' ')[0].replace('from-', 'bg-');
+
+  return (
+    <div className="relative border border-gray-200 rounded-[30px] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] p-2 w-full max-w-[500px] font-montserrat overflow-hidden">
+      {/* Profile Image - positioned absolutely to match reference */}
+      <div className="absolute left-0 top-0 w-[220px] h-full rounded-l-[30px] overflow-hidden">
+        <img 
+          src={image} 
+          alt={name}
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+      
+      {/* Blur effect behind image */}
+      <div
+        className={`absolute w-[170px] h-full rounded-l-[30px] left-0 top-0 blur-[25px] opacity-20 ${blurColor}`}
+      />
+      
+      {/* Content area */}
+      <div className="ml-[240px] relative z-10 py-1">
+        <div className="flex items-center gap-2 mt-2 mb-1">
+          <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-500' : 'bg-red-500'}`} />
+          <span className={`text-xs font-semibold ${isActive ? 'text-green-600' : 'text-red-600'}`}>
+            {isActive ? 'Active' : 'Inactive'}
+          </span>
+        </div>
+        
+        <h3 className="text-[28px] font-bold text-gray-900 leading-tight mb-1">
+          {name}
+        </h3>
+        
+        <p className="text-lg font-semibold text-gray-700 mb-1">
+          {category}
+        </p>
+        
+        <div className="mb-1">
+          <span className="block text-sm font-medium text-gray-800 mb-1">Language:</span>
+          <div className="flex gap-2 flex-wrap">
+            {languages.map((lang, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-white rounded-full text-xs font-medium text-gray-800 border border-gray-200"
+              >
+                {lang}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <div className="mb-1">
+          <span className="block text-sm font-medium text-gray-800">Talk: {talk}</span>
+          <span className="block text-sm font-medium text-gray-800">Timing: {timing}</span>
+        </div>
+        
+        <div className="flex gap-2 mt-2">
+          <button
+            className="flex items-center gap-2 px-4 py-1 bg-green-500 rounded-full shadow-md text-white text-sm font-semibold hover:scale-105 transition-colors"
+            aria-label="Call"
+          >
+            <FaPhone className="text-xs" />
+            Call
+          </button>
+          <button
+            className="flex items-center gap-2 px-4 py-1 bg-purple-900 rounded-full shadow-md text-white text-sm font-semibold hover:scale-105 transition-colors"
+            aria-label="Give Review"
+          >
+            <FaStar className="text-xs" />
+            Give Review
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function ServiceExchange() {
   const [activeTab, setActiveTab] = useState('offered');
@@ -16,10 +101,10 @@ export default function ServiceExchange() {
       languages: ["Hindi", "English"],
       talk: "₹5/Min",
       timing: "9 AM To 5 PM",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
       isActive: true,
       status: "Active",
-      bgGradient: "from-blue-500 to-blue-700"
+      bgGradient: "from-blue-500 to-blue-700",
     },
     {
       id: 2,
@@ -28,35 +113,30 @@ export default function ServiceExchange() {
       languages: ["Hindi", "English", "Punjabi"],
       talk: "₹5/Min",
       timing: "9 AM To 5 PM",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
       isActive: false,
       status: "Inactive",
-      bgGradient: "from-green-500 to-teal-600"
-    }
+      bgGradient: "from-green-500 to-teal-600",
+    },
   ];
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6 ">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-       <div className="flex justify-between items-center mb-8">
-  {/* Recharge Button */}
-  <button className=" bg-gradient-to-r from-gray-900 to-gray-600  text-white px-6 py-1 rounded-xl flex items-center gap-2 hover:scale-105 transition-colors">
-    <FaRupeeSign className="text-lg" />
-    Recharge
-  </button>
-
-  {/* Title */}
-  <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-700 text-transparent bg-clip-text">
-  Service Exchange
-</h1>
-
-  {/* Add Service Button */}
-  <button className=" bg-gradient-to-r from-gray-600 to-gray-900 text-white px-6 py-1 rounded-xl flex items-center gap-2 hover:scale-105 transition-colors">
-    <FaPlusCircle className="text-lg" />
-    Add Service
-  </button>
-</div>
+        <div className="flex justify-between items-center mb-8">
+          <button className="bg-gradient-to-r from-gray-900 to-gray-600 text-white px-6 py-2 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
+            <FaRupeeSign className="text-lg" />
+            Recharge
+          </button>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-[#994004] bg-clip-text text-transparent">
+            Service Exchange
+          </h1>
+          <button className="bg-gradient-to-r from-gray-600 to-gray-900 text-white px-6 py-2 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
+            <FaPlusCircle className="text-lg" />
+            Add Service
+          </button>
+        </div>
 
         {/* Description */}
         <div className="text-center mb-8">
@@ -94,9 +174,10 @@ export default function ServiceExchange() {
 
         {/* Service Offers Section */}
         <div className="mb-8">
-          <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 to-blue-900 shadown-lg text-transparent bg-clip-text">
-  Service Offers
-</h2>          
+          <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 to-[#074299] bg-clip-text text-transparent mt-4">
+            Service Offers
+          </h2>
+          
           {/* Search and Filter Bar */}
           <div className="flex gap-4 mb-8 max-w-4xl mx-auto">
             <select className="flex-1 px-4 py-3 bg-white border border-blue-400 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -106,7 +187,6 @@ export default function ServiceExchange() {
               <option>Technology</option>
               <option>Consulting</option>
             </select>
-            
             <select className="flex-1 px-4 py-3 bg-white border border-blue-400 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option>Service</option>
               <option>Business Development</option>
@@ -114,7 +194,6 @@ export default function ServiceExchange() {
               <option>Sales Strategy</option>
               <option>Brand Consulting</option>
             </select>
-            
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
               <input
@@ -128,70 +207,9 @@ export default function ServiceExchange() {
           </div>
 
           {/* Professional Cards */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
             {professionals.map((professional) => (
-              <div key={professional.id} className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex gap-6">
-                  {/* Profile Image */}
-                  <div className="relative">
-                    <img 
-                      src={professional.image}
-                      alt={professional.name}
-                      className="w-24 h-24 rounded-full object-cover"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className={`w-24 h-24 bg-gradient-to-br ${professional.bgGradient} rounded-full items-center justify-center hidden`}>
-                      <span className="text-white text-2xl font-bold">
-                        {professional.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  {/* Professional Info */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`w-3 h-3 rounded-full ${professional.isActive ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                      <span className={`text-sm font-medium ${professional.isActive ? 'text-green-600' : 'text-red-600'}`}>
-                        {professional.status}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-gray-800 mb-1">{professional.name}</h3>
-                    <p className="text-gray-600 font-medium mb-3">{professional.category}</p>
-                    
-                    <div className="mb-4">
-                      <p className="text-sm text-gray-600 mb-1">Language:</p>
-                      <div className="flex gap-2">
-                        {professional.languages.map((lang, index) => (
-                          <span key={index} className="text-sm text-gray-700 bg-gray-100 px-2 py-1 rounded">
-                            {lang}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="mb-4">
-                      <p className="text-sm font-medium text-gray-800">Talk: {professional.talk}</p>
-                      <p className="text-sm text-gray-600">Timing: {professional.timing}</p>
-                    </div>
-                    
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full flex items-center gap-2 transition-colors">
-                        <Phone className="w-4 h-4" />
-                        Call
-                      </button>
-                      <button className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-full transition-colors">
-                        Give Review
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProfessionalCard key={professional.id} {...professional} />
             ))}
           </div>
         </div>
