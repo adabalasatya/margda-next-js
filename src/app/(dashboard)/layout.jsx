@@ -1,5 +1,5 @@
-import DashboardNavbar from '@/components/Dashbord/DashboardNavbar/page'
-import DashboardSidebar from "@/components/Dashbord/DashboardSidebar/page"
+import DashboardNavbar from '@/components/Dashboard/DashboardNavbar/page'
+import DashboardSidebar from "@/components/Dashboard/DashboardSidebar/page"
 
 export default function DashboardLayout({ children }) {
   return (
