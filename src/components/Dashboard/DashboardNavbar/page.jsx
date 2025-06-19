@@ -48,9 +48,9 @@ const DashboardNavbar = () => {
   }, []);
 
   return (
-    <div className="bg-white h-[94px] relative font-montserrat">
+    <div className="bg-gray-50  relative font-montserrat">
       {/* Main navbar content */}
-      <div className="relative z-10 flex justify-between items-center p-6 h-full">
+      <div className="relative z-10 flex justify-between items-center p-4 ">
     
         {/* Navigation Buttons */}
         <div className="flex flex-wrap ml-48 gap-8">
@@ -58,10 +58,10 @@ const DashboardNavbar = () => {
             <button
               key={index}
               onClick={() => handleButtonClick(item.text, item.route)}
-              className={`flex items-center h-[48px] px-6 border rounded-[17px] text-[15px] font-bold transition-all hover:scale-105 shadow-md ${
+              className={`flex items-center p-3 px-6 border border-[0968D8] border-solid rounded-[17px] text-[15px] font-bold transition-all hover:scale-105 shadow-md ${
                 activeButton === item.text
-                  ? "bg-gradient-to-b from-[#053772] to-[#0968D8] text-white border-white"
-                  : "bg-gradient-to-b from-[#053772] to-[#0968D8] text-white border-white"
+                  ? "bg-gradient-to-b from-[#053772] to-[#0968D8] text-white"
+                  : "bg-gradient-to-b from-[#053772] to-[#0968D8] text-white"
               }`}
             >
               {item.img && (
