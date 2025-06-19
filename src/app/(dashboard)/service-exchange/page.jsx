@@ -1,88 +1,96 @@
-'use client'
+"use client";
+import Image from "next/image";
+import { Montserrat } from "next/font/google";
 
-import React, { useState } from 'react';
-import { Search, Phone, Star, Headset } from 'lucide-react';
-import { FaRupeeSign, FaPlusCircle, FaHeadset, FaPhone, FaStar} from 'react-icons/fa';
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+});
 
-const ProfessionalCard = ({
-  name,
-  category,
-  languages,
-  talk,
-  timing,
-  image,
-  isActive,
-  bgGradient,
-}) => {
-  const blurColor = bgGradient.split(' ')[0].replace('from-', 'bg-');
+// Static provider data (API integration removed)
+const providers = [
+  {
+    id: 1,
+    name: "Arnav Singh",
+    service: "Sales & Business",
+    languages: ["Hindi", "English"],
+    rate: 5,
+    timing: "9 AM To 5 PM",
+    image: "/images/pexels-italo-melo-881954-2379004-photoroom-10.png",
+    callIcon: "/images/mage-phone-call-fill0.svg",
+    status: "available",
+    blurColor: "#ff6c08",
+  },
+  {
+    id: 2,
+    name: "Gurpreet Sidhu",
+    service: "Marketing",
+    languages: ["Hindi", "English", "Punjabi"],
+    rate: 5,
+    timing: "9 AM To 5 PM",
+    image: "/images/pexels-ketut-subiyanto-4307884-photoroom-10.png",
+    callIcon: "/images/mage-phone-call-fill1.svg",
+    status: "unavailable",
+    blurColor: "#0c6fff",
+  },
+];
 
+// Reusable ServiceCard Component
+const ServiceCard = ({ provider }) => {
   return (
-    <div className="relative border border-gray-200 rounded-[30px] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] p-2 w-full max-w-[500px] font-montserrat overflow-hidden">
-      {/* Profile Image - positioned absolutely to match reference */}
-      <div className="absolute left-0 top-0 w-[220px] h-full rounded-l-[30px] overflow-hidden">
-        <img 
-          src={image} 
-          alt={name}
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
-      
-      {/* Blur effect behind image */}
+    <div className="rounded-3xl bg-gray-100 shadow-2xl border border-gray-300 relative h-64 w-full max-w-[500px] mx-auto overflow-visible">
       <div
-        className={`absolute w-[170px] h-full rounded-l-[30px] left-0 top-0 blur-[25px] opacity-20 ${blurColor}`}
-      />
-      
-      {/* Content area */}
-      <div className="ml-[240px] relative z-10 py-1">
-        <div className="flex items-center gap-2 mt-2 mb-1">
-          <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-500' : 'bg-red-500'}`} />
-          <span className={`text-xs font-semibold ${isActive ? 'text-green-600' : 'text-red-600'}`}>
-            {isActive ? 'Active' : 'Inactive'}
-          </span>
+        className="absolute inset-0 rounded-full w-40 h-40 blur-2xl opacity-30 -left-0 -top-0"
+        style={{ backgroundColor: provider.blurColor }}
+      ></div>
+      <div className="flex h-full relative">
+        <div className="w-[380px] relative z-10 overflow-visible">
+          <Image
+            src={provider.image}
+            alt={provider.name}
+            width={150} 
+            height={50}
+            className="object-contain w-[300px] absolute left-0 top-[-30px]" 
+            style={{ transform: "translateX(-20px)" }} 
+            onError={(e) => { e.target.src = "/images/fallback-profile.png"; }} 
+          />
         </div>
-        
-        <h3 className="text-[28px] font-bold text-gray-900 leading-tight mb-1">
-          {name}
-        </h3>
-        
-        <p className="text-lg font-semibold text-gray-700 mb-1">
-          {category}
-        </p>
-        
-        <div className="mb-1">
-          <span className="block text-sm font-medium text-gray-800 mb-1">Language:</span>
-          <div className="flex gap-2 flex-wrap">
-            {languages.map((lang, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 bg-white rounded-full text-xs font-medium text-gray-800 border border-gray-200"
-              >
+        <div className="w-2/3 p-4 relative z-20">
+          <div className="flex items-center gap-2">
+            <div
+              className={`w-2 h-2 rounded-full ${
+                provider.status === "available" ? "bg-green-500" : "bg-red-500"
+              }`}
+            ></div>
+            <h3 className="text-xl font-semibold text-gray-800 truncate">{provider.name}</h3>
+          </div>
+          <p className="text-gray-800 font-semibold mt-2 truncate">{provider.service}</p>
+          <p className="text-black text-xs mt-2">Language:</p>
+          <div className="flex gap-2 mt-1 flex-wrap">
+            {provider.languages.map((lang, index) => (
+              <span key={index} className="bg-white text-black rounded-full px-2 py-1 text-xs">
                 {lang}
               </span>
             ))}
           </div>
-        </div>
-        
-        <div className="mb-1">
-          <span className="block text-sm font-medium text-gray-800">Talk: {talk}</span>
-          <span className="block text-sm font-medium text-gray-800">Timing: {timing}</span>
-        </div>
-        
-        <div className="flex gap-2 mt-2">
-          <button
-            className="flex items-center gap-2 px-4 py-1 bg-green-500 rounded-full shadow-md text-white text-sm font-semibold hover:scale-105 transition-colors"
-            aria-label="Call"
-          >
-            <FaPhone className="text-xs" />
-            Call
-          </button>
-          <button
-            className="flex items-center gap-2 px-4 py-1 bg-purple-900 rounded-full shadow-md text-white text-sm font-semibold hover:scale-105 transition-colors"
-            aria-label="Give Review"
-          >
-            <FaStar className="text-xs" />
-            Give Review
-          </button>
+          <p className="text-black text-xs mt-2">Talk: ₹{provider.rate}/Min</p>
+          <p className="text-black text-xs">Timing: {provider.timing}</p>
+          <div className="flex gap-2 mt-4">
+            <button className="bg-[#5fd668] hover:scale-105 rounded-xl text-white text-xs px-4 py-1 flex items-center gap-1">
+              <Image
+                src={provider.callIcon}
+                alt="Call"
+                width={14}
+                height={14}
+                onError={(e) => { e.target.src = "/images/fallback-call-icon.svg"; }} // Fallback for missing icon
+              />
+              Call
+            </button>
+            <button className="bg-[#4f3e99] hover:scale-105 rounded-xl text-white text-xs px-4 py-1">
+              Give Review
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -90,129 +98,128 @@ const ProfessionalCard = ({
 };
 
 export default function ServiceExchange() {
-  const [activeTab, setActiveTab] = useState('offered');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const professionals = [
-    {
-      id: 1,
-      name: "Arnav Singh",
-      category: "Sales & Business",
-      languages: ["Hindi", "English"],
-      talk: "₹5/Min",
-      timing: "9 AM To 5 PM",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-      isActive: true,
-      status: "Active",
-      bgGradient: "from-blue-500 to-blue-700",
-    },
-    {
-      id: 2,
-      name: "Gurpreet Sidhu",
-      category: "Marketing",
-      languages: ["Hindi", "English", "Punjabi"],
-      talk: "₹5/Min",
-      timing: "9 AM To 5 PM",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-      isActive: false,
-      status: "Inactive",
-      bgGradient: "from-green-500 to-teal-600",
-    },
-  ];
-
   return (
-    <div className="min-h-screen p-6 ">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <button className="bg-gradient-to-r from-gray-900 to-gray-600 text-white px-6 py-2 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
-            <FaRupeeSign className="text-lg" />
-            Recharge
-          </button>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-[#994004] bg-clip-text text-transparent">
-            Service Exchange
-          </h1>
-          <button className="bg-gradient-to-r from-gray-600 to-gray-900 text-white px-6 py-2 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
-            <FaPlusCircle className="text-lg" />
-            Add Service
-          </button>
-        </div>
+    <div
+      className={`${montserrat.variable} bg-white rounded-tl-[46px] rounded-tr-[46px] min-h-screen relative overflow-hidden font-montserrat w-full max-w-[1280px] mx-auto`}
+    >
+      {/* Action Buttons */}
+      <div className="flex justify-between px-6 md:px-8 pt-6">
+        <button className="bg-[#3b3b3b] rounded-xl hover:scale-105 border border-gray-600 px-4 py-2 flex items-center gap-2">
+          <Image src="/images/clip-path-group0.svg" alt="Recharge" width={20} height={20} />
+          <span className="text-white">Recharge</span>
+        </button>
+        <button className="bg-[#3b3b3b] rounded-xl hover:scale-105 border border-gray-600 px-4 py-2 flex items-center gap-2">
+          <Image src="/images/eos-icons-service-instance0.svg" alt="Add Service" width={20} height={20} />
+          <span className="text-white">Add Service</span>
+        </button>
+      </div>
 
-        {/* Description */}
-        <div className="text-center mb-8">
-          <p className="text-gray-700 font-semibold text-md mb-2">
-            Users click to instantly call service providers and pay by the minute to consult with experts.
-          </p>
-          <p className="text-gray-700 font-semibold text-md">
-            Verified professionals can offer on-demand solutions on per-minute talk time and a freelancing or commission basis.
-          </p>
-        </div>
+      {/* Header Section */}
+      <div className="p-6 md:p-8 flex flex-col items-center text-center">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF6C08] to-[#994105] bg-clip-text text-transparent">
+          Service Exchange
+        </h1>
+        <p className="text-base font-bold text-gray-600 mt-2 max-w-3xl">
+          Users click to instantly call service providers and pay by the minute to consult with experts.
+        </p>
+        <p className="text-base font-bold text-gray-600 max-w-3xl">
+          Verified professionals can offer on-demand solutions on per-minute talk time and a freelancing or commission basis.
+        </p>
+      </div>
 
-        {/* Service Toggle Buttons */}
-        <div className="flex justify-center gap-4 mb-12">
-          <button
-            onClick={() => setActiveTab('offered')}
-            className={`px-8 py-3 rounded-full text-lg font-medium transition-all ${
-              activeTab === 'offered'
-                ? 'bg-orange-500 text-white shadow-lg'
-                : 'bg-white text-gray-600 border border-gray-300 hover:bg-orange-50'
-            }`}
-          >
-            Service offered
-          </button>
-          <button
-            onClick={() => setActiveTab('required')}
-            className={`px-8 py-3 rounded-full text-lg font-medium transition-all ${
-              activeTab === 'required'
-                ? 'bg-orange-500 text-white shadow-lg'
-                : 'bg-white text-gray-600 border border-gray-300 hover:bg-orange-50'
-            }`}
-          >
-            Service required
-          </button>
-        </div>
+      {/* Service Type Toggle */}
+      <div className="flex justify-center gap-4 mt-6">
+        <button className="bg-[#ff6c08] rounded-xl text-white hover:scale-105 font-semibold px-6 py-2">
+          Service offered
+        </button>
+        <button className="bg-[#ff6c08] rounded-xl text-white hover:scale-105 font-semibold px-6 py-2">
+          Service required
+        </button>
+      </div>
 
-        {/* Service Offers Section */}
-        <div className="mb-8">
-          <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 to-[#074299] bg-clip-text text-transparent mt-4">
-            Service Offers
-          </h2>
-          
-          {/* Search and Filter Bar */}
-          <div className="flex gap-4 mb-8 max-w-4xl mx-auto">
-            <select className="flex-1 px-4 py-3 bg-white border border-blue-400 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Service Type</option>
-              <option>Sales & Business</option>
-              <option>Marketing</option>
-              <option>Technology</option>
-              <option>Consulting</option>
-            </select>
-            <select className="flex-1 px-4 py-3 bg-white border border-blue-400 rounded-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Service</option>
-              <option>Business Development</option>
-              <option>Digital Marketing</option>
-              <option>Sales Strategy</option>
-              <option>Brand Consulting</option>
-            </select>
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 text-gray-900 font-bold bg-white border border-blue-400 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-          </div>
+      {/* Section Title */}
+      <h2 className="text-3xl md:text-4xl font-bold text-center mt-8 bg-gradient-to-r from-[#0C6FFF] to-[#074399] bg-clip-text text-transparent">
+        Service Offers
+      </h2>
 
-          {/* Professional Cards */}
-          <div className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
-            {professionals.map((professional) => (
-              <ProfessionalCard key={professional.id} {...professional} />
-            ))}
-          </div>
-        </div>
+      {/* Filter Section */}
+    <div className="flex flex-col md:flex-row gap-4 p-6 md:p-6 justify-center">
+  {/* Service Type Select */}
+  <div className="border border-gray-300 rounded-xl mt-2 flex-1 max-w-md relative flex items-center">
+    <label htmlFor="service-type" className="sr-only">Select service type</label>
+    <select
+      id="service-type"
+      className="w-full bg-transparent text-[#5e5e5e] font-semibold pl-4 pr-8 h-10 focus:outline-none rounded-xl appearance-none"
+      aria-label="Select service type"
+      defaultValue="" 
+    >
+      <option value="" disabled className="text-[#5e5e5e] opacity-70">
+        Service Type
+      </option>
+      <option value="sales">Sales & Business</option>
+      <option value="marketing">Marketing</option>
+    </select>
+    <Image
+      src="/images/formkit-down0.svg"
+      alt="Dropdown icon"
+      width={12}
+      height={12}
+      className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+      onError={(e) => { e.target.src = "/images/fallback-icon.svg"; }}
+    />
+  </div>
+
+  {/* Service Select */}
+  <div className="border border-gray-300 rounded-xl mt-2 flex-1 max-w-md relative flex items-center">
+    <label htmlFor="service" className="sr-only">Select service</label>
+    <select
+      id="service"
+      className="w-full bg-transparent text-[#5e5e5e] font-semibold pl-4 pr-8 h-10 focus:outline-none rounded-xl appearance-none"
+      aria-label="Select service"
+      defaultValue="" 
+    >
+      <option value="" disabled className="text-[#5e5e5e] opacity-70">
+        Service
+      </option>
+      <option value="consulting">Consulting</option>
+      <option value="strategy">Strategy</option>
+    </select>
+    <Image
+      src="/images/formkit-down1.svg"
+      alt="Dropdown icon"
+      width={12}
+      height={12}
+      className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+      onError={(e) => { e.target.src = "/images/fallback-icon.svg"; }}
+    />
+  </div>
+
+  {/* Search Input */}
+  <div className="border border-gray-300 rounded-xl mt-2 flex-1 max-w-md relative flex items-center">
+    <label htmlFor="search" className="sr-only">Search service providers</label>
+    <input
+      id="search"
+      type="text"
+      placeholder="Search"
+      className="w-full bg-transparent text-[#5e5e5e] font-semibold pl-4 pr-10 h-10 focus:outline-none rounded-xl"
+      aria-label="Search service providers"
+    />
+    <Image
+      src="/images/group1.svg"
+      alt="Search icon"
+      width={16}
+      height={16}
+      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+      onError={(e) => { e.target.src = "/images/fallback-icon.svg"; }}
+    />
+  </div>
+</div>
+
+      {/* Service Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 p-6 md:p-8">
+        {providers.map((provider) => (
+          <ServiceCard key={provider.id} provider={provider} />
+        ))}
       </div>
     </div>
   );
