@@ -102,37 +102,45 @@ export default function ServiceExchange() {
     <div
       className={`${montserrat.variable} bg-white rounded-tl-[46px] rounded-tr-[46px] min-h-screen relative overflow-hidden font-montserrat w-full max-w-[1280px] mx-auto`}
     >
-      {/* Action Buttons */}
-      <div className="flex justify-between px-6 md:px-8 pt-6">
-        <button className="bg-[#3b3b3b] rounded-xl hover:scale-105 border border-gray-600 px-4 py-2 flex items-center gap-2">
-          <Image src="/images/clip-path-group0.svg" alt="Recharge" width={20} height={20} />
-          <span className="text-white">Recharge</span>
-        </button>
-        <button className="bg-[#3b3b3b] rounded-xl hover:scale-105 border border-gray-600 px-4 py-2 flex items-center gap-2">
-          <Image src="/images/eos-icons-service-instance0.svg" alt="Add Service" width={20} height={20} />
-          <span className="text-white">Add Service</span>
-        </button>
-      </div>
+    {/* Header with Action Buttons */}
+<div className="flex items-center justify-between px-6 md:px-6 mt-4">
+  {/* Left Button */}
+  <button className="bg-[#3b3b3b] rounded-xl hover:scale-105 border border-gray-600 px-4 py-1 flex items-center gap-2">
+    <Image src="/images/clip-path-group0.svg" alt="Recharge" width={20} height={20} />
+    <span className="text-white">Recharge</span>
+  </button>
 
-      {/* Header Section */}
-      <div className="p-6 md:p-8 flex flex-col items-center text-center">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF6C08] to-[#994105] bg-clip-text text-transparent">
-          Service Exchange
-        </h1>
-        <p className="text-base font-bold text-gray-600 mt-2 max-w-3xl">
-          Users click to instantly call service providers and pay by the minute to consult with experts.
-        </p>
-        <p className="text-base font-bold text-gray-600 max-w-3xl">
-          Verified professionals can offer on-demand solutions on per-minute talk time and a freelancing or commission basis.
-        </p>
-      </div>
+  {/* Center Heading */}
+  <div className="text-center flex-1">
+    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF6C08] to-[#994105] bg-clip-text text-transparent">
+      Service Exchange
+    </h1>
+  </div>
+
+  {/* Right Button */}
+  <button className="bg-[#3b3b3b] rounded-xl hover:scale-105 border border-gray-600 px-4 py-2 flex items-center gap-2">
+    <Image src="/images/eos-icons-service-instance0.svg" alt="Add Service" width={20} height={20} />
+    <span className="text-white">Add Service</span>
+  </button>
+</div>
+
+{/* Description Text (below the header row) */}
+<div className="flex flex-col items-center text-center mt-4">
+  <p className="text-base font-bold text-gray-600 mt-2 max-w-3xl">
+    Users click to instantly call service providers and pay by the minute to consult with experts.
+  </p>
+  <p className="text-base font-bold text-gray-600 max-w-3xl">
+    Verified professionals can offer on-demand solutions on per-minute talk time and a freelancing or commission basis.
+  </p>
+</div>
+  
 
       {/* Service Type Toggle */}
       <div className="flex justify-center gap-4 mt-6">
-        <button className="bg-[#ff6c08] rounded-xl text-white hover:scale-105 font-semibold px-6 py-2">
+        <button className="bg-[#ff6c08] border border-gray-200 rounded-xl text-white hover:scale-105 font-semibold px-6 py-1">
           Service offered
         </button>
-        <button className="bg-[#ff6c08] rounded-xl text-white hover:scale-105 font-semibold px-6 py-2">
+        <button className="bg-[#ff6c08] border border-gray-200 rounded-xl text-white hover:scale-105 font-semibold px-6 py-1">
           Service required
         </button>
       </div>
