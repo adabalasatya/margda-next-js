@@ -128,7 +128,7 @@ export default function Lead() {
                   placeholder="From Date"
                   className="text-[#3b3b3b] font-montserrat font-semibold text-xs bg-transparent outline-none w-full text-center"
                 />
-                <Image src="/images/uim-calender0.svg" alt="Calendar" width={16} height={16} className="ml-2" />
+                
               </div>
               <span className="text-[#3b3b3b] font-montserrat font-semibold text-base">To Date</span>
               <div className="bg-white rounded-xl border border-gray-500 w-32 h-9 flex items-center justify-center hover:scale-105 transition-all cursor-pointer">
@@ -139,7 +139,7 @@ export default function Lead() {
                   placeholder="To Date"
                   className="text-[#3b3b3b] font-montserrat font-semibold text-xs bg-transparent outline-none w-full text-center"
                 />
-                <Image src="/images/uim-calender1.svg" alt="Calendar" width={16} height={16} className="ml-2" />
+                
               </div>
             </div>
 
