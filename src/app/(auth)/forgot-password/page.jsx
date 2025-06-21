@@ -127,6 +127,7 @@ export default function ForgotPasswordPage() {
       {/* Header */}
       <div className="bg-white bg-opacity-86 rounded-[43px] ml-16 w-[calc(100%-44px)] max-w-[1369px] h-[86px] absolute left-[22px] top-[21px] flex items-center justify-between px-8">
         <div className="flex items-center">
+         <Link href="/">
           <div className="relative w-[350px] h-[50px] mr-4">
             <Image 
               src="/image/margdalogo.png" 
@@ -135,12 +136,13 @@ export default function ForgotPasswordPage() {
               objectFit="contain"
             />
           </div>
+         </Link>
           <div>
           </div>
         </div>
         
         <div className="flex items-center space-x-6">
-          <Link href="/login" className="flex items-center text-left font-semibold text-xl bg-gradient-to-r from-[#666666] to-black bg-clip-text text-transparent">
+          <Link href="/login" className="flex  hover:scale-105 items-center text-left font-semibold text-xl bg-gradient-to-r from-[#666666] to-black bg-clip-text text-transparent">
             <Image 
               src="/forgot/group1.svg" 
               alt="Login icon" 
@@ -150,7 +152,7 @@ export default function ForgotPasswordPage() {
             />
             Login
           </Link>
-          <Link href="/download" className="flex items-center text-left font-semibold text-xl bg-gradient-to-r from-black to-[#666666] bg-clip-text text-transparent">
+          <Link href="/download" className="flex  hover:scale-105 items-center text-left font-semibold text-xl bg-gradient-to-r from-black to-[#666666] bg-clip-text text-transparent">
             <Image 
               src="/forgot/ic-twotone-cloud-download0.svg" 
               alt="Download icon" 

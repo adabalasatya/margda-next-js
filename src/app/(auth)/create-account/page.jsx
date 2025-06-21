@@ -88,7 +88,7 @@ export default function CreateAccountPage() {
       <div className="bg-black rounded-[50%] w-[445px] h-[70px] absolute left-[236px] top-[662px] blur-[25.9px]"></div>
       
       {/* Create Account card */}
-      <div className="bg-white bg-opacity-57 rounded-[25px] mr-16 w-[469px] h-[601px] absolute right-[22px] top-[155px] overflow-hidden"
+      <div className="bg-white bg-opacity-57 rounded-[25px] mr-32 w-[469px] h-[601px] absolute right-[22px] top-[155px] overflow-hidden"
         style={{
           borderImage: 'linear-gradient(224.92deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%)',
           borderImageSlice: 1
@@ -269,6 +269,7 @@ export default function CreateAccountPage() {
       {/* Header */}
       <div className="bg-white bg-opacity-86 ml-16 rounded-[43px] w-[calc(100%-44px)] max-w-[1369px] h-[86px] absolute left-[22px] top-[21px] flex items-center justify-between px-8">
         <div className="flex items-center">
+          <Link href="/">
           <div className="relative w-[350px] h-[50px] mr-4">
             <Image 
               src="/image/margdalogo.png" 
@@ -277,12 +278,13 @@ export default function CreateAccountPage() {
               objectFit="contain"
             />
           </div>
+          </Link>
           <div>
           </div>
         </div>
         
         <div className="flex items-center space-x-6">
-          <Link href="/login" className="flex items-center text-left font-semibold text-xl bg-gradient-to-r from-[#666666] to-black bg-clip-text text-transparent">
+          <Link href="/login" className="flex items-center  hover:scale-105 text-left font-semibold text-xl bg-gradient-to-r from-[#666666] to-black bg-clip-text text-transparent">
             <Image 
               src="/signup/group2.svg" 
               alt="Login icon" 
@@ -292,7 +294,7 @@ export default function CreateAccountPage() {
             />
             Login
           </Link>
-          <Link href="/download" className="flex items-center text-left font-semibold text-xl bg-gradient-to-r from-black to-[#666666] bg-clip-text text-transparent">
+          <Link href="/download" className="flex  hover:scale-105 items-center text-left font-semibold text-xl bg-gradient-to-r from-black to-[#666666] bg-clip-text text-transparent">
             <Image 
               src="/signup/ic-twotone-cloud-download0.svg" 
               alt="Download icon" 
