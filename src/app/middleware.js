@@ -5,11 +5,11 @@ export function middleware(request) {
   
   // If user tries to access dashboard without token, redirect to login
   if (request.nextUrl.pathname.startsWith('/dashboard') && !token) {
-    return NextResponse.redirect(new URL('/login', request.url))
+    return NextResponse.redirect(new URL('/signin', request.url))
   }
   
   // If user is logged in but tries to access auth pages, redirect to dashboard
-  if (['/login', '/signup'].includes(request.nextUrl.pathname) && token) {
+  if (['/signin', '/signup'].includes(request.nextUrl.pathname) && token) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
   
