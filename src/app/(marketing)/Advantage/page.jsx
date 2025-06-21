@@ -123,7 +123,7 @@ const MargdaWorkplaceAdvantage = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
-            <button className=" bg-gradient-to-r from-white to-[rgba(102,102,102,1)] bg-clip-text text-transparent font-semibold text-[22px] py-4 px-8 rounded-[34px] w-[300px] h-[85px] flex items-center justify-center gap-3 border border-white">
+            <button className=" bg-gradient-to-r from-white to-[rgba(102,102,102,1)] bg-clip-text text-transparent font-semibold text-[20px] py-4 px-8 rounded-[34px] w-[300px] h-[85px] flex items-center justify-center gap-3 border border-white">
               Request a Demo
               <div className="w-[45px] h-[45px] bg-gradient-to-b from-[#D9D9D9] to-[#FF6C08] rounded-full flex items-center justify-center">
                 <svg
@@ -142,7 +142,7 @@ const MargdaWorkplaceAdvantage = () => {
                 </svg>
               </div>
             </button>
-            <button className=" bg-gradient-to-r from-white to-[rgba(102,102,102,1)] bg-clip-text text-transparent font-semibold text-[24px] py-4 px-8 rounded-[34px] w-[300px] h-[85px] flex items-center justify-center gap-3 border border-white">
+            <button className=" bg-gradient-to-r from-white to-[rgba(102,102,102,1)] bg-clip-text text-transparent font-semibold text-[20px] py-4 px-8 rounded-[34px] w-[300px] h-[85px] flex items-center justify-center gap-3 border border-white">
               Start Free Trial
               <div className="w-[45px] h-[45px] bg-gradient-to-b from-[#D9D9D9] to-[#0C6FFF] rounded-full flex items-center justify-center">
                 <svg

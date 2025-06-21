@@ -48,7 +48,7 @@ const DashboardNavbar = () => {
   }, []);
 
   return (
-    <div className="bg-gray-50  relative font-montserrat">
+    <div className="bg-white relative font-montserrat">
       {/* Main navbar content */}
       <div className="relative z-10 flex justify-between items-center p-4 ">
     
